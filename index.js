@@ -20,6 +20,7 @@ var gameInterval = null
 function checkCollision(rock) {
   // implement me!
   // use the comments below to guide you!
+  
   const top = positionToInteger(rock.style.top)
 
   // rocks are 20px high
@@ -56,7 +57,7 @@ function checkCollision(rock) {
         return false;
       }
   }
-};
+}
 
 function createRock(x) {
   //calling the the rock objects w/ a DOM element & styling the left position
@@ -105,6 +106,7 @@ window.requestAnimationFrame(moveRock)
  * Finally, alert "YOU LOSE!" to the player. Note that `setInterval()` returns a reference to the interval. We can stop the interval from executing by calling `clearInterval(myInterval)`. */
 
 function endGame() {
+
   clearInterval(gameInterval)
 
 for(var i=0; i < ROCKS.length; i++){
@@ -113,13 +115,31 @@ for(var i=0; i < ROCKS.length; i++){
 window.removeEventListener('keydown', moveDodger);
 
 alert('YOU LOSE!');
-};
+}
 document.removeEventListener('keydown', moveDodger);
+
+  /*clearInterval(gameInterval)
+
+for(var i=0; i < ROCKS.length; i++){
+  ROCKS[i].remove()
+  document.removeEventListener('keydown', moveDodger());
+  }
+alert('YOU LOSE');
+*/
+document.removeEventListener('keydown', moveDodger);
+  clearInterval(gameInterval);
+    ROCKS.forEach(function(rock){
+      rock.remove();
+  });
+  alert("YOU LOSE!");
+}
+
 
 function moveDodger(e) {
   // implement me!
   /** This function should call `moveDodgerLeft()` if the left arrow is pressed and `moveDodgerRight()` & if the right arrow is pressed. (Check the constants we've declared for you above.)
    * And be sure to use the functions declared below! */
+
    /*
    if (e.which === 37 || e.which === 39 ){
    e.preventDefault();
@@ -147,6 +167,19 @@ window.requestAnimationFrame(function(){
     DODGER.style.left = `${left - 4}px`
     }
   });
+
+   document.addEventListener('keydown', function(e){
+     if(e.which === 37){
+
+     }
+   })
+}
+
+function moveDodgerLeft() {
+  // implement me!
+  /**
+   * This function should move DODGER to the left (mabye 4 pixels?). Use window.requestAnimationFrame()!
+   */
 }
 
 function moveDodgerRight() {
